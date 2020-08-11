@@ -1,2 +1,9 @@
 # platformProject
-Simple platformer game, with ccontroller support, written in python using pygame
+Simple platformer game, with controller support, written in python using pygame
+Currently supported contollers:
+<ul>
+  <li>Xbox One/Xbox 360</li>
+  <li>Nintendo Switch Pro Controller</li>
+  <li>Gamecube Controller With Mayflash adapter</li>
+  <li>Joycon (Left or right, not both)</li>
+</ul>
