@@ -175,7 +175,9 @@ while loop:
                         sprinting = True
                 if event.type == pygame.JOYBUTTONUP:
                     if event.button in [2, 3]:
-                        sprinting = False
+                        if event.type == pygame.JOYBUTTONDOWN:
+                            if not (event.button in [2, 3]):
+                                sprinting = False
                 if event.type == pygame.JOYHATMOTION:
                     if event.value[0] == 1:
                         moving_right = True
@@ -184,14 +186,6 @@ while loop:
                     if event.value[0] == 0:
                         moving_right = False
                         moving_left = False
-                x_axis = joystick.get_axis(0)
-                if x_axis > 0.5:
-                    moving_right = True
-                if x_axis < -0.5:
-                    moving_left = True
-                if -0.5 < x_axis < 0.5:
-                    moving_left = False
-                    moving_right = False
             if "joy-con" in joy_name.lower():
                 if event.type == pygame.JOYBUTTONDOWN:
                     if event.button in [1, 0]:
@@ -201,7 +195,9 @@ while loop:
                         sprinting = True
                 if event.type == pygame.JOYBUTTONUP:
                     if event.button in [2, 3]:
-                        sprinting = False
+                        if event.type == pygame.JOYBUTTONDOWN:
+                            if not (event.button in [2, 3]):
+                                sprinting = False
                 if event.type == pygame.JOYHATMOTION:
                     if event.value[0] == 1:
                         moving_right = True
@@ -219,7 +215,9 @@ while loop:
                         sprinting = True
                 if event.type == pygame.JOYBUTTONUP:
                     if event.button in [2, 3]:
-                        sprinting = False
+                        if event.type == pygame.JOYBUTTONDOWN:
+                            if not(event.button in [2, 3]):
+                                sprinting = False
                 if event.type == pygame.JOYHATMOTION:
                     if event.value[0] == 1:
                         moving_right = True
@@ -229,13 +227,35 @@ while loop:
                         moving_right = False
                         moving_left = False
                 x_axis = joystick.get_axis(0)
-                if x_axis > 0.35:
+                if x_axis > 0.4:
                     moving_right = True
-                if x_axis < -0.35:
+                if x_axis < -0.4:
                     moving_left = True
-                if -0.35 < x_axis < 0.35:
-                    moving_left = False
+                if -0.4 < x_axis < 0.4:
+                    if event.type == pygame.JOYHATMOTION:
+                        if event.value[0] == 0:
+                            moving_right = False
+                            moving_left = False
+            if "wup" in joy_name.lower():
+                if event.type == pygame.JOYBUTTONDOWN:
+                    if event.button in [2, 1]:
+                        if air_timer < 6:
+                            momentum = -5
+                    if event.button in [0, 3]:
+                        sprinting = True
+                if event.type == pygame.JOYBUTTONUP:
+                    if event.button in [0, 3]:
+                        if event.type == pygame.JOYBUTTONDOWN:
+                            if not (event.button in [0, 3]):
+                                sprinting = False
+                x_axis = joystick.get_axis(0)
+                if x_axis > 0.5:
+                    moving_right = True
+                if x_axis < -0.5:
+                    moving_left = True
+                if -0.5 < x_axis < 0.5:
                     moving_right = False
+                    moving_left = False
     screen.blit(pygame.transform.scale(display, WINDOW_SIZE), (0, 0))
     pygame.display.update()
     clock.tick(60)
