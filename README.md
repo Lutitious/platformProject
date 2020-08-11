@@ -1,2 +1,2 @@
 # platformProject
-Simple platformer game, with ccontroller support, currently just code, written in python using pygame
+Simple platformer game, with ccontroller support, written in python using pygame
