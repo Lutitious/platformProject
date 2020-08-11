@@ -8,6 +8,7 @@ Currently supported contollers:
   <li>Gamecube Controller With Mayflash adapter</li>
   <li>Joycon (Left or right, not both)</li>
 </ul>
+For any other controllers use Xoutput or another Xinput wrapper
 <br><br>
 Controls:
 Keyboard - A/D to move, Space to Jump, Shift to sprint, 
