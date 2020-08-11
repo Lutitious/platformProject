@@ -1,5 +1,5 @@
 # platformProject
-Simple platformer game, with controller support, written in python using pygame<br>
+Simple platformer game, with controller support, written in python using pygame<br><br><br>
 Currently supported contollers:
 <ul>
   <li>Xbox One/Xbox 360</li>
