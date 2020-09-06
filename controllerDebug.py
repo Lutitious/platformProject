@@ -74,7 +74,7 @@ while not done:
     textPrint.reset()
 
     # Get count of joysticks.
-    joystick_count = pygame.joystick.get_count()
+    joystick_count = lowe
 
     textPrint.tprint(screen, "Number of joysticks: {}".format(joystick_count))
     textPrint.indent()
