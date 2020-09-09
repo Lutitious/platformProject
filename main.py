@@ -18,17 +18,17 @@ momentum = 0
 air_timer = 0
 
 game_map1 = """
-x----xxxxxx----xxxx
-oxx----ooo-------oo
-o------ooo--------o
-o---xxxoo-----xxxxo
-o------ooxxxx-----o
-oxxx---oo-------xxo
-o------oo---------o
-o---xxxooxxxxxxxx-o
-o------oo---------o
-oxxxxxxoo-xxxxxxxxo
-ooooooooo----------
+-------------------
+-------------------
+-------------------
+-------------------
+----------xxxxx----
+---------oooooo----
+---xxx-------------
+--oooo-------------
+-------------------
+xxxxxxxxxxxxxxxxxxx
+ooooooooooooooooooo
 ooooooooooooooooooo
 """.splitlines()
 
@@ -40,7 +40,7 @@ tl["x"] = grass_img = pygame.image.load('grass.jpg')
 
 player_img = pygame.image.load('player.png').convert()
 player_img.set_colorkey((255, 255, 255))
-player_rect = pygame.Rect(100, 100, 5, 13)
+player_rect = pygame.Rect(100, 100, 15, 13)
 
 
 def collision_test(rect, tiles):
@@ -191,26 +191,26 @@ while loop:
                         moving_left = False
             if "switch" or "lira" or "pro cont" in joy_name.lower():
                 if event.type == pygame.JOYBUTTONDOWN:
-                    if event.button in [1, 2]:
+                    if event.button in [0, 1]:
                         if air_timer < 6:
                             momentum = -5
-                    if event.button in [0, 3]:
+                    if event.button in [2, 3]:
                         sprinting = True
                 if event.type == pygame.JOYBUTTONUP:
                     if event.button in [2, 3]:
                         if event.type == pygame.JOYBUTTONDOWN:
                             if not(event.button in [2, 3]):
                                 sprinting = False
-                if event.type == pygame.JOYHATMOTION:
-                    if event.value[0] == 1:
-                        moving_right = True
-                        stay_right = True
-                    if event.value[0] == -1:
-                        moving_left = True
-                        stay_right = False
-                    if event.value[0] == 0:
-                        moving_right = False
-                        moving_left = False
+                x_axis = joystick.get_axis(0)
+                if x_axis > 0.5:
+                    moving_right = True
+                    stay_right = True
+                if x_axis < -0.5:
+                    moving_left = True
+                    stay_right = False
+                if -0.5 < x_axis < 0.5:
+                    moving_right = False
+                    moving_left = False
             if "wup" in joy_name.lower():
                 if event.type == pygame.JOYBUTTONDOWN:
                     if event.button in [2, 1]:
